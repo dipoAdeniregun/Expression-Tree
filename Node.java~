@@ -1,0 +1,65 @@
+public class Node{
+  //variables
+  public NodeType type;
+  public char operator;
+  public int operand;
+  public String variableName;
+  public Node left;
+  public Node right;
+  
+  //constructors
+  /***************************************************************************
+    * INPUT: type (NodeType) - an ENUM type to specify if the Node contains an
+    *                          operator, operan or variable name
+    *        nodeItem (String) - a string containing the operator, operand or string to
+    *                            be stored in the Node
+    * METHOD: depending on the type, an int, char or String is created to store the operand,
+    *         operator or Variable Name using a switch statement.
+    * ************************************************************************/
+  public Node(NodeType type, String nodeItem){
+    this.type = type;
+    switch(type){
+      case OPERAND:{
+        operand = Integer.parseInt(nodeItem);
+      }
+      break;
+      case OPERATOR:{
+        operator = nodeItem.charAt(0);
+      }
+      break;
+      case VARIABLE:{
+        variableName = nodeItem;
+      }
+      break;
+    }
+    left = null;
+    right = null;
+  }//Node
+  
+  /***************************************************************************
+    * METHOD: return a string containing the item stored in the node
+    * OUTPUT: (String) s
+    * ************************************************************************/
+  public String toString(){
+    String s = "";
+    switch(type){
+      case OPERAND:
+        s += operand;
+        break;
+      case OPERATOR:
+        s += operator;
+        break;
+      case VARIABLE:
+        s = variableName;
+        break;
+    }
+    return s;
+  }//toString
+  
+}//Node class end
+
+/***************************************************************************
+    * INPUT: 
+    * METHOD: 
+    * OUTPUT: 
+    * ************************************************************************/

@@ -1,0 +1,26 @@
+enum NodeType{
+  VARIABLE,
+  OPERAND,
+  OPERATOR
+}
+
+public class A4Test{
+  public static void main(String[] args){
+    Node n1 = new Node(NodeType.VARIABLE, "speed of light");
+    Node n2 = new Node(NodeType.OPERAND, "5");
+    Node n3 = new Node(NodeType.OPERATOR, "*");
+    
+    System.out.println(n1 + ": " + n2 + " " + n3);
+    
+    Queue q1 = new Queue();
+    q1.enqueue(n1);
+    q1.enqueue(n2);
+    q1.enqueue(n3);
+    System.out.println(q1);
+    System.out.print(q1.dequeue() + " ");
+    System.out.print(q1.dequeue()+ " ");
+    System.out.print(q1.dequeue()+ " ");
+    System.out.println(q1.dequeue()+ " ");
+    System.out.println(q1);
+  }
+}

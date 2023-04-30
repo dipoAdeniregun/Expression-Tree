@@ -1,0 +1,52 @@
+import java.util.*;
+import java.io.*;
+
+enum NodeType{
+  VARIABLE,
+  OPERAND,
+  OPERATOR
+}
+
+public class AdeniregunAdedipupoA4Q1{
+  try{
+    File in = new File("ExpressionTree.txt");
+    Scanner sc = new Scanner(in);
+    String next;
+    Tree t1 = null;
+    
+    do{
+      next = sc.next();
+      switch (next){
+        case "COMMENT":{
+           System.out.println(sc.nextLine());
+        }break;
+        case "NEW":{
+          t1 = new Tree(sc.nextLine().split(" "));
+          System.out.println("New tree constrcuted");
+        }break;
+        case "PRINTINFIX":{
+          if(t1 != null)
+            t1.printInfix();
+        }break;
+        case "PRINTPREFIX":{
+          if(t1 != null)
+            t1.printPrefix();
+        }break;
+        case "PRINPOSTFIX":{
+          if(t1 != null)
+            t1.printPostfix();
+        }break;
+        case "SIMPLIFY":{
+          if(t1 != null){
+            t1.simplify();
+            System.out.println("Tree simplified");
+          }
+        }break;
+      }
+    }
+    while(sc.hasNext());
+  }
+  catch(IOException e){
+    
+  }
+}

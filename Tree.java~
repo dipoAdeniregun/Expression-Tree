@@ -1,0 +1,98 @@
+public class Tree{
+  public Node root;
+  
+  /***************************************************************************
+    * INPUT: 
+    * METHOD: 
+    * OUTPUT: 
+    * ************************************************************************/
+  public Tree(String[] in){
+    Node[] nodeIn = new Node[in.length];
+    for(int i = 0; i < in.length; i++){
+      nodeIn[i] = new Node(in[i]);
+    }
+    
+    if(nodeIn[0].type == OPERATOR)
+      root = constructPrefix(nodeIn);
+    else
+      root = constructPostfix(nodeIn);
+  }
+ 
+  /***************************************************************************
+    * INPUT: 
+    * METHOD: 
+    * OUTPUT: 
+    * ************************************************************************/
+  public void comment(String comment){
+    
+  }
+  
+  /***************************************************************************
+    * INPUT: 
+    * METHOD: 
+    * OUTPUT: 
+    * ************************************************************************/
+  public void printInfix(){
+    
+  }
+  
+  /***************************************************************************
+    * INPUT: 
+    * METHOD: 
+    * OUTPUT: 
+    * ************************************************************************/
+  public void printPostfix(){
+    
+  }
+  
+  /***************************************************************************
+    * INPUT: 
+    * METHOD: 
+    * OUTPUT: 
+    * ************************************************************************/
+  public void printPrefix(){
+    
+  }
+  
+  /***************************************************************************
+    * INPUT: 
+    * METHOD: 
+    * OUTPUT: 
+    * ************************************************************************/
+  public String simplify(){
+    return "";
+  }
+  
+  /***************************************************************************
+    * INPUT: 
+    * METHOD: 
+    * OUTPUT: 
+    * ************************************************************************/
+  private Node constructPrefix(Node[] in){
+    return null;
+  }
+  
+  /***************************************************************************
+    * INPUT: in(Node[]) - An array of Nodes containing all characters in the 
+    *                     postfix expression
+    * METHOD: If the current Node in the expression is an operand, push it unto the stack
+    *         but if it is an operator, pop two items from the stack and set them as
+    *         the operands children ten push operant unto stack
+    * OUTPUT: Node - The final Node popped from the stack. Should be the root for the
+    *                expression tree.
+    * ************************************************************************/
+  private Node constructPostfix(Node[] in){
+    Stack s1 = new Stack();
+    for(Node curr: in){
+      if(curr.type == NodeType.OPERATOR){
+        curr.right = s1.pop();
+        curr.left = s1.pop();
+        s1.push(curr);
+      }
+      else{
+        s1.push(curr);
+      }
+    }
+    return s1.pop();
+  }
+}

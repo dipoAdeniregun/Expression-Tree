@@ -1,0 +1,75 @@
+public class Queue{
+  public LLNode end;
+  
+  //constructor
+  public Queue(){
+    end = null;
+  }
+  
+  /***************************************************************************
+    * INPUT: (Node) in: the Node to be entered into the queue 
+    * METHOD: 
+    * ************************************************************************/
+  public void enqueue(Node in){
+    if(end == null){
+      end = new LLNode(in, null);
+      end.next = end;
+      System.out.println(end.next);
+    }
+    else{
+      System.out.println("Line 20: " + end.next);
+      LLNode newNode = new LLNode(in, end.next);
+      System.out.println("Line 22: " + newNode.next);
+      end.next = newNode;
+      end = newNode;
+      System.out.println("Line 25: " + end.next);
+    }
+  }
+  
+  /***************************************************************************
+    * METHOD: Remove from queue
+    * OUTPUT: The Node that was removed from the queue
+    * ************************************************************************/
+  public Node dequeue(){
+    Node removed = null;
+    if(end != null){
+      removed = end.next.data;
+    
+      if(end.next == end)
+        end = null;
+      else
+        end.next = end.next.next;
+    }
+    return removed;
+  }
+  
+  public String toString(){
+    String s = "< ";
+    if(end != null){
+      
+      LLNode curr = end.next;
+      
+      s += curr.data + " " ;
+      curr = curr.next;
+      
+      while(curr != end.next){
+        s += curr.data + " ";
+        curr = curr.next;
+      }
+    }
+    return s + " <";
+  }
+}
+
+class LLNode{
+  public Node data;
+  public LLNode next;
+  
+  //constructors
+  
+  
+  public LLNode(Node data, LLNode next){
+    this.data = data;
+    this.next = next;
+  }
+}
